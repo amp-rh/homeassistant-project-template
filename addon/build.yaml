@@ -1,0 +1,13 @@
+build_from:
+  aarch64: ghcr.io/home-assistant/aarch64-base-python:3.11-alpine3.18
+  amd64: ghcr.io/home-assistant/amd64-base-python:3.11-alpine3.18
+  armv7: ghcr.io/home-assistant/armv7-base-python:3.11-alpine3.18
+  armhf: ghcr.io/home-assistant/armhf-base-python:3.11-alpine3.18
+  i386: ghcr.io/home-assistant/i386-base-python:3.11-alpine3.18
+args:
+  PYTHON_VERSION: "3.11"
+labels:
+  org.opencontainers.image.title: "My Python Add-on"
+  org.opencontainers.image.description: "A Python-based Home Assistant add-on"
+  org.opencontainers.image.source: "https://github.com/YOUR-USERNAME/YOUR-REPO"
+  org.opencontainers.image.licenses: "Apache-2.0"

@@ -1,0 +1,16 @@
+#!/usr/bin/with-contenv bashio
+# ==============================================================================
+# Start the add-on service
+# ==============================================================================
+bashio::log.info "Starting My Python Add-on..."
+
+# Export configuration as environment variables
+export LOG_LEVEL=$(bashio::config 'log_level')
+bashio::log.info "Log level: ${LOG_LEVEL}"
+
+# Change to the app directory
+cd /usr/src/app || bashio::exit.nok "Could not change to app directory"
+
+# Run the Python application
+bashio::log.info "Starting Python application..."
+exec uv run python -m my_addon

@@ -1,84 +1,71 @@
-# Python Project Template
+# Home Assistant Add-on Python Template
 
-A Python project template with an AGENTS.md-based documentation system for AI agent guidance.
+A comprehensive Python project template for developing Home Assistant add-ons with modern tooling, local development workflow, and AI-friendly documentation.
 
 ## Features
 
-- **AGENTS.md System**: Hierarchical documentation indexes for AI agents
-- **Modern Python Tooling**: uv, pytest, ruff
-- **Container Support**: Rootless UBI9 S2I container builds
-- **Agent Workspace**: Structured scratch space with templates
+- **Complete Add-on Structure**: Ready-to-use Home Assistant add-on configuration
+- **AGENTS.md System**: Hierarchical documentation indexes for AI agent guidance
+- **Modern Python Tooling**: uv, pytest, ruff, mypy
+- **Local Development**: Rapid iteration without full HA installation
+- **Multi-Architecture**: Build for aarch64, amd64, armv7, armhf, i386
+- **Podman-Based**: Rootless containers using HA base images
+- **Production-Ready**: Matches Home Assistant Supervisor requirements
 
 ## Quick Start
 
 ```bash
-# Install uv if not already installed
-curl -LsSf https://astral.sh/uv/install.sh | sh
+# 1. Clone this template
+git clone https://github.com/YOUR-USERNAME/homeassistant-addon-template.git my-addon
+cd my-addon
 
-# Clone and setup
-git clone https://github.com/YOUR-USERNAME/python-project-template.git
-cd python-project-template
+# 2. Install dependencies
 uv sync --extra dev
 
-# Run tests
-make test
+# 3. Setup local development
+make setup
 
-# Run linting
-make lint
+# 4. Start development server (runs without Home Assistant!)
+make dev
+
+# 5. Access your add-on at http://localhost:8000
 ```
-
-## Project Structure
-
-```
-├── AGENTS.md           # AI agent guidance (start here)
-├── .agents/            # Agent-specific resources
-│   ├── commands/       # Slash command definitions
-│   ├── docs/           # Granular documentation
-│   │   ├── tooling/    # uv, pytest, ruff
-│   │   ├── patterns/   # Code patterns
-│   │   ├── conventions/# Naming, imports
-│   │   ├── workflows/  # PR, testing, releases, contributing
-│   │   └── architecture/# Design decisions
-│   ├── learnings/      # Discovered patterns
-│   ├── scratch/        # Agent working space
-│   └── templates/      # Reusable templates
-├── src/my_package/     # Source code (rename to your package)
-└── tests/              # Tests
-```
-
-## For AI Agents
-
-This project uses AGENTS.md files as indexes. Before making changes:
-
-1. Read the `AGENTS.md` in the directory you're working in
-2. Follow linked documentation in `.agents/docs/`
-3. Update docs when patterns are learned
-
-See [AGENTS.md](AGENTS.md) for the root index.
-
-## Using This Template
-
-1. **Create from template** or clone this repository
-2. **Rename package**: `mv src/my_package src/your_package`
-3. **Update references**: Search for `my_package` and replace
-4. **Update pyproject.toml**: Change name, description, authors
 
 ## Make Targets
 
 ```bash
 make help          # Show all targets
-make install       # Install dependencies
-make dev           # Install with dev dependencies
+make setup         # Setup local development environment
+make dev           # Start local development server
 make test          # Run tests
 make lint          # Run linting
 make format        # Format code
-make build         # Build container image
-make run           # Run container
+make build         # Build add-on container
+make run           # Run add-on container locally
+make test-addon    # Test with Home Assistant
+make clean         # Clean up build artifacts
 ```
 
-## Contributing
+## Documentation for AI Agents
 
-See [.agents/docs/workflows/contributing.md](.agents/docs/workflows/contributing.md) for agent contribution guidelines.
+This project uses AGENTS.md files as documentation indexes:
+
+- **Getting Started**: [.agents/docs/workflows/local-development.md](.agents/docs/workflows/local-development.md)
+- **Add-on Structure**: [.agents/docs/patterns/addon-structure.md](.agents/docs/patterns/addon-structure.md)
+- **Supervisor API**: [.agents/docs/patterns/supervisor-api.md](.agents/docs/patterns/supervisor-api.md)
+- **Publishing**: [.agents/docs/workflows/publishing.md](.agents/docs/workflows/publishing.md)
+
+See [AGENTS.md](AGENTS.md) for the complete index.
+
+## Using This Template
+
+1. Rename `src/my_addon` to your add-on name
+2. Update `addon/config.yaml` with your add-on details
+3. Update `pyproject.toml` with your project name
+4. Implement your add-on logic in `src/`
+5. Test locally with `make dev`
+6. Build container with `make build`
+7. Publish following `.agents/docs/workflows/publishing.md`
 
 ## License
 
