@@ -11,4 +11,3 @@ import pytest
 def sample_data() -> dict[str, str]:
     """Provide sample data for tests."""
     return {"key": "value"}
-
